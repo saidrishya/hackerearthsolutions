@@ -1,0 +1,55 @@
+/* 
+Monk just purchased an array A having N integers. Monk is very superstitious. He calls the array A Lucky if the frequency of the minimum
+element is odd, otherwise he considers it Unlucky. Help Monk in finding out if the array is Lucky or not.
+
+Input:
+First line consists of a single integer T denoting the number of test cases.
+First line of each test case consists of a single integer N denoting the size of array A.
+Second line of each test case consists of N space separated integers denoting the array A.
+
+Output:
+For each test case, print "Lucky" (without quotes) if frequency of minimum element is odd, otherwise print "Unlucky"(without quotes).
+Print a new line after each test case.
+
+Constraints: 
+1≤T≤10
+1≤N≤105
+1≤A[i]≤109
+
+SAMPLE INPUT 
+2
+5
+8 8 9 5 9
+5
+3 3 3 5 3
+SAMPLE OUTPUT 
+Lucky
+Unlucky
+
+*/
+
+
+
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+		int t; cin>>t; while(t--)
+	{
+	    int n; cin>>n;
+                int a[n],i;
+                 for(i=0;i<n;i++) cin>>a[i];
+                 sort(a,a+n); int k=a[0] , c=1;
+        for(i=1;i<n;i++)
+        {
+            if(a[i] == k) c++;
+        }
+        if(c%2 !=0) cout<<"Lucky\n";
+        else cout<<"Unlucky\n";
+                 
+}
+
+}
+
