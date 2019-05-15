@@ -1,0 +1,77 @@
+/*
+Given two strings of equal length, you have to tell whether they both strings are identical.
+
+Two strings S1 and S2 are said to be identical, if any of the permutation of string S1 is equal to the string S2. See Sample explanation
+for more details.
+
+Input :
+
+First line, contains an intger 'T' denoting no. of test cases.
+Each test consists of a single line, containing two space separated strings S1 and S2 of equal length.
+Output:
+
+For each test case, if any of the permutation of string S1 is equal to the string S2 print YES else print NO.
+Constraints:
+
+1<= T <=100
+1<= |S1| = |S2| <= 10^5
+String is made up of lower case letters only.
+Note : Use Hashing Concept Only . Try to do it in O(string length) .
+
+SAMPLE INPUT 
+3
+sumit mitsu
+ambuj jumba
+abhi hibb
+SAMPLE OUTPUT 
+YES
+YES
+NO
+Explanation
+For first test case,
+
+mitsu can be rearranged to form sumit .
+
+For second test case,
+
+jumba can be rearranged to form ambuj .
+
+For third test case,
+
+hibb can not be arranged to form abhi.
+
+*/
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+	int t; cin>>t; while(t--)
+	{
+	 string s1,s2;
+	 cin>>s1>>s2;
+	// int n= s1.size();
+	      //int sum1=0, sum2=0;
+	     if(s1.size()!= s2.size())
+	     {
+	         cout<<"NO\n";
+	         break;
+	     }
+	     else
+	     {
+	         int i;
+	         sort(s1.begin(), s1.end());
+	         sort(s2.begin(), s2.end());
+	      for(i=0;i<s1.size();i++)
+	      {
+	        if(s1[i]!=s2[i]) break;
+	        else;
+	      }
+	      if(i == s1.size()) cout<<"YES\n";
+	      else cout<<"NO\n";
+	     }
+	  
+	}
+}
+
