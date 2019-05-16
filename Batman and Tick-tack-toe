@@ -1,0 +1,122 @@
+/*
+Batman has defeated Hugo Strange and now he is getting bored as there is too much peace in Gotham City.
+
+To pass his time he used to play 4 X 4 field Tick-Tac-Toe. One Day While playing, Commissioner Gordan Called Batman and he had to leave
+immediately so he didnt finish the game. It was Batman's turn in the game when they left it. Find Out whether Batman could have won the game
+by making a single turn or not.
+
+The rules of tic-tac-toe are as follows.
+
+Before the first turn all the field cells are empty. The two players take turns placing their signs into empty cells (the first player places
+Xs, the second player places Os). The player who places Xs goes first, the another one goes second. The winner is the player who first gets
+three of his signs in a row next to each other (horizontal, vertical or diagonal).
+Input:
+
+The first line of each test case defines the number of test cases t. then the next 4 line t times gives the tic-tac-toe positions Each of
+these lines contains four characters. Each character is '.' (empty cell), 'x' (lowercase English letter x), or 'o' (lowercase English letter
+o). It is guaranteed that the position is reachable playing tic-tac-toe, and it is Batman's turn now (in particular, it means that the game 
+is not finished). It is possible that all the cells are empty, it means that the Both Batman and Robin left without making single turn.
+
+Output:
+
+Print single line: "YES" in case Batman could have won by making single turn, and "NO" otherwise.
+
+Constraints:
+
+1<=t<=10
+
+SAMPLE INPUT 
+3
+xx..
+.oo.
+x...
+oox.
+o.x.
+o...
+.x..
+ooxx
+x..x
+..oo
+o...
+x.xo
+SAMPLE OUTPUT 
+YES
+NO
+YES
+*/
+
+
+
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+   int t; cin>>t; while(t--)
+   {
+       char a[4][4];
+       int i,j;
+       bool ans=false;
+       for(i=0;i<4;i++)
+       {
+        for(j=0;j<4;j++) 
+        {
+            cin>>a[i][j];
+        }
+       }
+        for(i=0;i<4;i++)
+        {
+        for(j=0;j<2;j++) 
+         {
+           if((a[i][j]=='x' && a[i][j+1]=='x' && a[i][j+2]=='.') ||
+            (a[i][j]=='x' && a[i][j+1]=='.' && a[i][j+2]=='x') ||
+               ( a[i][j]=='.' && a[i][j+1]=='x' && a[i][j+2]=='x') ) ans=true;
+           
+         }
+        }
+        
+        for(i=0;i<2;i++)
+        {
+        for(j=0;j<4;j++)
+        {
+            if((a[i][j]=='x' && a[i+1][j]=='x' && a[i+2][j]=='.') ||
+             (a[i][j]=='x' && a[i+1][j]=='.' && a[i+2][j]=='x') ||
+              (a[i][j]=='.' && a[i+1][j]=='x' && a[i+2][j]=='x') )     ans= true;
+            
+        }
+        }
+        
+         for(i=0;i<2;i++)
+        {
+        for(j=2;j<4;j++)
+        {
+         if((a[i][j]=='x' && a[i+1][j-1]=='x' && a[i+2][j-2]=='.') ||
+           ( a[i][j]=='x' && a[i+1][j-1]=='.' && a[i+2][j-2]=='x') ||
+             ( a[i][j]=='.' && a[i+1][j-1]=='x' && a[i+2][j-2]=='x')  )    ans= true;
+            
+        }
+}
+
+
+ for(i=0;i<2;i++)
+        {
+        for(j=0;j<2;j++)
+        {
+         if((a[i][j]=='x' && a[i+1][j+1]=='x' && a[i+2][j+2]=='.') ||
+           ( a[i][j]=='x' && a[i+1][j+1]=='.' && a[i+2][j+2]=='x') ||
+             ( a[i][j]=='.' && a[i+1][j+1]=='x' && a[i+2][j+2]=='x'))      ans= true;
+            
+        }
+}
+       if(ans) cout<<"YES\n";
+       else cout<<"NO\n";
+       
+   }
+    
+}
+
+
+
+
+
