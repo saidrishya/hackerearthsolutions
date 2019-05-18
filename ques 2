@@ -1,0 +1,34 @@
+/*
+You are given n inputs and two numbers x and y. check whether all the given numbers lies in range of x and y. (x <= y). If the condition is 
+true print YES else print NO.
+input Format:
+First line contains N, X, Y seperated by space.
+Next Line contains n integers.
+
+
+
+SAMPLE INPUT 
+5 1 5
+1 2 3 4 5
+SAMPLE OUTPUT 
+YES
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int n,l,r; 
+    cin>>n>>l>>r;
+    int a[n];
+    for(int i=0;i<n;i++) cin>>a[i];
+    // if(r>n) cout<<"NO\n";
+    int k=1;
+    for(int i=0;i<n;i++)
+    {
+        if(!(a[i]>=l && a[i]<=r)) {k=0; break; }
+    }
+    if(k) cout<<"YES\n";
+    else cout<<"NO\n";
+}
