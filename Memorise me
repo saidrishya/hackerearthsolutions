@@ -59,32 +59,21 @@ For the fifth query i.e. for 3. 3 is not present in the array . So the correspon
 #include <bits/stdc++.h>
 using namespace std;
 
-int oc(int a[], long long n,int k)
-{
-    int i,c=0;
-    for(i=0;i<n;i++)
-    {
-        if(a[i] == k) c++;
-    }
-     if(c>0) return c ;
-     else return -1; 
-}
-
 int main()
 {
-    long long n,i;
-    cin>>n;
-    int a[n];
-    for(i=0;i<n;i++) cin>>a[i];
-    sort(a,a+n);
-    int qs; cin>>qs;
-    int q[qs];
-    for(i=0;i<qs;i++) cin>>q[i];
-    for(i=0;i<qs;i++)
+    int n,a[n],k,q,tc;
+    cin>>n; 
+    for(int i=0;i<n;i++)
     {
-        if(oc(a,n,q[i]) >0) cout<<oc(a,n,q[i])<<endl;
-        else cout<<"NOT PRESENT"<<endl;
+        cin>>k;
+        a[k]++;
     }
-    
+    cin>>q;
+    while(q--)
+    {
+        cin>>tc;
+        if(a[tc]>0) cout<<a[tc]<<endl;
+        else cout<<"NOT PRESENT\n";
+    }
     
 }
