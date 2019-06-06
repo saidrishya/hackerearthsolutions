@@ -1,0 +1,70 @@
+/*
+You and your roommate are teammates in SNACKDOWN competition. There are N questions in SNACKDOWN round numbered from 1 to N.  You can do some
+particular P questions while your roommate can do some particular Q questions. 
+Now the question is will your team be able to solve all the N questions if you work together? 
+
+Constraints:
+
+1<=T<=100
+1<=N<=100
+Input Format- 
+
+First line of input contains number of test cases, T.
+First line of each test case contains the integer N.
+Second line of each test case contains the integer P then followed by P distinct space seperated integers integers a1, a2,..,ap (1<=ai<=N) 
+which denote the questions you can solve.
+Second line of each test case contains the integer Q followed by Q distinct integers which denote the questions your roommate can solve in the
+same format as above line.
+It's assumed that levels are numbered from 1 to N.
+
+Output Format - 
+
+For every test case print "YES" (without quotes) if your team will be able to solve all the N questions, otherwise print "NO" (without quotes)
+in a new line.
+
+SAMPLE INPUT 
+2
+4
+3 1 2 3
+2 2 4
+4
+3 1 2 3
+2 2 3
+SAMPLE OUTPUT 
+YES
+NO
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t; cin>>t; while(t--)
+    {
+      int n; cin>>n;
+      int p,a[n],i,q;
+      for(i=1;i<=n;i++) a[i]=0;
+      cin>>p;
+      for(i=1;i<=p;i++)
+      {
+          int k;
+          cin>>k;
+          a[k]++;
+      }
+      cin>>q;
+      for(i=1;i<=q;i++)
+      {
+          int k;
+          cin>>k;
+          a[k]++;
+      }
+      for(i=1;i<=n;i++)
+      {
+          if(a[i]==0) break;
+      }
+     if(i>n) cout<<"YES\n";
+     else cout<<"NO\n"; 
+    }
+    
+}
