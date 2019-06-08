@@ -1,0 +1,47 @@
+/*
+Anshul and Usama are fond of games and devote most of their time playing them. On one hand Anshul likes to play outdoor games like football, 
+cricket, etc whereas on the other hand Usama likes to play mobile games like Clash of Clans, Mini Militia, etc. One day their teacher decided 
+to punish them. As punishment, their teacher sent them to a building and locked all the exit points of that building. After locking the exit
+points, their teacher informed them from outside that the only way to come out of the building was by solving a problem.
+
+The problem he gave was that they will be given some initial terms of a series and they have to use the series and tell him the maximum value
+of (|Ai + Aj|+|Ai - Aj|) where Ai and Aj are some ith and jth term of the series with the condition 0 <= i,j < n. Also, 'i' can not be equal 
+to 'j'. 
+
+The initial terms of the series are 20, 30, 40, 90, 80, 270,...
+
+
+
+
+INPUT
+The value of n= 62
+
+OUTPUT
+Output the maximum value of (|Ai + Aj|+|Ai - Aj|).
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin>>n;
+    long long a[n+1],p=2,q=3,base=2,max=0;
+    a[0]=2;
+    a[1]=3;
+    for(int i=2; i<n; i+=2)
+     {
+         a[i]= pow(p,base);
+         a[i+1]=pow(q,base);
+         base++;
+     }
+     for(int i=0;i<n-1;i++)
+      {
+       if((a[i]+a[i+1])+ abs(a[i]-a[i+1]) > max)
+                {
+                    max=a[i]+a[i+1]+ abs(a[i]-a[i+1]);
+                }
+      }
+     cout<<max*10<<endl;
+}
