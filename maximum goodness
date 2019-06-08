@@ -1,0 +1,64 @@
+/*
+Given an Array A consisting of 0's and 1's  of length N. The goodness of a subarray is defined as difference between number of 1's  and
+number of 0's  present in the subarray.Output the length of longest subarray with maximum value of goodness.
+
+Input:
+
+The first line of Input contains Integer N.
+
+The second line contains N space-separated integers A1, A2, ..., AN denoting the elements of array A.
+
+Output:
+
+Print length of Longest subarray with maximum goodness value.
+
+Constraints:
+
+1 ≤ N ≤ 103
+
+0 ≤ A[i] ≤ 1
+
+SAMPLE INPUT 
+14
+1 1 1 1 0 0 1 1 0 0 0 1 0 0
+SAMPLE OUTPUT 
+8
+Explanation
+The maximum value of difference of count of 1's  and count of 0's is 4 corresponding to subarrays [1,8] and [1,4] assuming 1 based indexing of
+array but longest subarray is [1,8] hence answer is 8. 
+*/
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+	int n; 	cin >> n;									
+    int a[n],max=INT_MIN,index=0;
+    for(int i=0;i<n; i++) cin>>a[i];
+    for(int i=0;i<n;i++)
+     {
+         int z=0;
+         int o=0;
+         for(int j=i;j<n;j++)
+          {
+              if(a[j] == 0) z++;
+              else o++;
+              int diff=o-z;
+              if( diff> max){
+                  max=diff;
+                  index=j-i+1;
+              }
+              if(diff == max){
+                  if(index< j-i+1){
+                      index=j-i+1;
+                  }
+              }
+              
+              
+              }
+               
+          }
+          cout<<index<<endl;
+     }
+
