@@ -1,0 +1,58 @@
+/*
+Creatnx now wants to decorate his house by flower pots. He plans to buy exactly N ones. He can only buy them from Triracle's shop. There are
+only two kind of flower pots available in that shop. The shop is very strange. If you buy X flower pots of kind 1 then you must pay A×X2 and
+B×Y2 if you buy Y flower pots of kind 2. Please help Creatnx buys exactly N flower pots that minimizes money he pays.
+
+Input Format
+
+The first line contains a integer T denoting the number of test cases.
+
+Each of test case is described in a single line containing three space-separated integers N,A,B.
+
+Output Format
+
+For each test case, print a single line containing the answer.
+
+Constraints
+
+1≤T≤105
+1≤N,A,B≤105
+ 
+
+SAMPLE INPUT 
+2
+5 1 2
+10 2 4
+
+SAMPLE OUTPUT 
+17
+134
+Explanation
+Query 1: we have to buy exactly 5 pots. There are six possible options:
+
+Buy 0 pot of first kind, 5 pots of second kind. The cost is: 1×02+2×52=50.
+Buy 1 pot of first kind, 4 pots of second kind. The cost is: 1×12+2×42=33.
+Buy 2 pots of first kind, 3 pots of second kind. The cost is: 1×22+2×32=22.
+Buy 3 pots of first kind, 2 pots of second kind. The cost is: 1×32+2×22=17.
+Buy 4 pots of first kind, 1 pot of second kind. The cost is: 1×42+2×12=18.
+Buy 5 pots of first kind, 0 pot of second kind. The cost is: 1×52+2×02=25.
+So, the optimal cost is 17.
+*/
+
+#include <bits/stdc++.h>
+#define ll long long int 
+using namespace std;
+
+int main()
+{
+    ll t; cin>>t; while(t--)
+    {
+        ll n,a,b;
+        cin>>n>>a>>b;
+        ll k=(b*n)/(a+b);
+        ll x=(a*k*k) + (b*(n-k)*(n-k));
+        k++;
+        ll y=(a*k*k) + (b*(n-k)*(n-k));
+        cout<<min(x,y)<<endl;
+    }
+}
