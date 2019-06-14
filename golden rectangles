@@ -1,0 +1,58 @@
+/*
+You have N rectangles. A rectangle is golden if the ratio of its sides is in between [1.6,1.7], both inclusive. Your task is to find the
+number of golden rectangles.
+
+Input format
+
+First line: Integer N denoting the number of rectangles
+Each of the N following lines: Two integers W,H denoting the width and height of a rectangle
+Output format
+
+Print the answer in a single line.
+Constraints
+
+1≤N≤105
+
+1≤W,H≤109
+
+SAMPLE INPUT 
+5
+10 1
+165 100
+180 100
+170 100
+160 100
+
+SAMPLE OUTPUT 
+3
+Explanation
+There are three golden rectangles: (165, 100), (170, 100), (160, 100).
+*/
+
+#include <bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+
+int main()
+{
+    ll n,ans=0; cin>>n;
+   // struct rect ar[n];
+    while(n--)
+    {
+        double a,b,c;
+        cin>>a>>b;
+        if(a>b)
+         {
+              c=a/b;
+             if(c >=1.6 && c<=1.7) ans++;
+         }
+        else if(a<b)
+        {
+            c=b/a;
+            if(c >=1.6 && c<=1.7) ans++;
+        }
+        
+    }
+    cout<<ans<<endl;
+}
