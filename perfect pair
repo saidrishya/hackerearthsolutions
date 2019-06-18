@@ -1,0 +1,77 @@
+/*
+Rajiv and Nitish had a fight because Rajiv was annoying Nitish with his question. Rajiv being a genius in arrays gave Nitish an array of
+natural numbers A of length N with elements A1,  A2, . . ., AN. Nitish has to find the total amount of perfect pairs in the array.
+  
+A perfect pair (Ai, Aj) is a pair where (Ai + Aj) is a perfect square or a perfect cube and i ≠ j. 
+  
+Since Rajiv and Nitish are not talking with each other after the fight you have been given the question to solve and inturn make both of them
+a perfect pair again.
+  
+NOTE :-  A pair (Ai, Aj) and (Aj, Ai) are same and not to be counted twice.
+
+ 
+
+Input
+
+The first line on the input contains the a single integer T denoting the number of test cases. The first line of each test case contains a 
+single integer N. The second line contains N space-separated integers A1,  A2, . . ., AN.
+
+Output
+
+For each test case, print a single line containing a single integer denoting the total number of perfect pairs.
+
+Constraints
+
+1 ≤  T ≤ 10
+1 ≤  N ≤ 105
+1 ≤  Ai ≤ 103
+
+SAMPLE INPUT 
+2
+5
+1 2 3 4 5
+4
+1 4 5 8
+SAMPLE OUTPUT 
+3
+2
+Explanation
+In first testcase pairs (1, 3), (3, 5) and (4,5) give values 4, 8, 9 and form perfect pairs.
+*/
+
+
+
+
+
+
+#include<bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+
+int main()
+{
+    int t; cin>>t; while(t--)
+    {
+        ll n,ans=0; cin>>n;
+        ll h[1001]={0}; 
+        ll a[n]; for(int i=0;i<n;i++) { cin>>a[i]; h[a[i]]++;}
+        for(int i=1;i<1001;i++)
+         {
+             for(int j=i; j<1001; j++)
+              {
+                  int s,c;
+                  s=sqrt(i+j);
+                  c=cbrt(i+j);
+                  if((i+j) == s*s || (i+j)==c*c*c){
+                      if(i==j){
+                          ans = ans + h[i]*(h[i]-1)/2;
+                      }
+                      else ans=ans+h[i]*h[j];
+                  }
+              }
+         }
+         cout<<ans<<endl;
+    }
+}
+In the second testcase pairs (1, 8), (4, 5) give values 9, 9 and form perfect pairs.
