@@ -1,0 +1,63 @@
+/*
+You have an array of length N. A subarray is called Interesting if it contains only even numbers. You have to  find the maximum length of
+such Interesting subarray.
+Input
+First line contains T , denoting number of test cases.
+Each test case contains two lines:
+    - First line contains an integer N denoting the size of the array.
+    - Second line contains N space seperated integers denoting the value of array elements.
+
+Ouput:
+For each test case, print the maximum length of Interesting subarray. If no such subarray exist,print -1.
+
+Input Constraints:
+
+1≤T≤10
+
+1≤N≤105
+
+1≤A[i]≤106
+
+Note:
+
+The input and output is handled by the code itself. You are just supposed to correct the function.
+
+SAMPLE INPUT 
+1
+4
+5 2 4 7
+SAMPLE OUTPUT 
+2
+*/
+
+
+#include <bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+
+
+int main(){
+    ll t; cin>>t; while(t--){
+        ll n; cin>>n;
+        ll a[n]; for(ll i=0; i<n;i++){
+            cin>>a[i];
+        }
+        ll maxlen=0, len=0;
+        for(ll i=0; i<n; i++){
+               if(a[i]%2 == 0){
+                   len++;
+               }
+               else
+               {
+                   if(len>maxlen)
+                       maxlen=len;
+                       len=0;
+                   
+               }
+            }
+            if(len>maxlen) maxlen=len;
+            if(maxlen) cout<<maxlen<<endl;
+            else cout<<-1<<endl;
+    }
+}
