@@ -1,0 +1,79 @@
+/*
+A simple question again..!
+
+These are the people from nirmaLand who have shown utmost dedication towards Competitve Programming..!
+
+You will be provided with name of the coder and no. of hours he/she spent on coding.
+
+You need to output top 3 names of the coders who spent most time in coding.
+
+Note: Time (no. of hours) given for all coders will be unique. More technically, no two coders will have same amount of time.
+
+See the sample case for better understanding.
+
+
+Input format:
+
+First line consist of total number of coders, let's say 'n'.
+
+Each of the next n lines consist of a string, let's say 'N' (name of coder) and a number let's say, 'T' (time).
+
+
+
+Output format:
+
+Output names of top 3 coders that spent maximum time in coding.
+
+
+Constraints:
+
+3 <= n <= 100
+
+1 <= |N| <= 10
+
+1 <= T <= 1000
+
+SAMPLE INPUT 
+7
+Darshan 78
+Harshad 90
+Jaimin 87
+Nirav 88
+Hardik 1
+Fenil 70
+Lovlin 5
+SAMPLE OUTPUT 
+Harshad
+Nirav
+Jaimin
+Explanation
+Harshad spent 90 hours in coding, which is maximum, so his name is at first.
+
+After Harshad, Nirav spent 88 hours in coding, which is maximum, so his name is second.
+
+After Nirav, Jaimin spent 87 hours in coding, which is maximum, so his name comes third.
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool sortbysec(const pair<string,int> &a, 
+              const pair<string,int> &b) 
+{ 
+    return (a.second < b.second); 
+} 
+
+int main(){
+    vector<pair<string, int>> a;
+    int n; cin>>n;
+    for(int i=0; i<n; i++){
+        string name;
+        int h;
+        cin>>name>>h;
+        a.push_back(make_pair(name,h));
+    }
+    sort(a.begin(),a.end(),sortbysec);
+    for(int i=n-1; i>=(n-3); i--){
+        cout<<a[i].first<<endl;
+    }
+}
