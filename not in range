@@ -1,0 +1,59 @@
+/*
+You are given 10^6 boxes that are numbered from 1 to 10^6. The value of each box is equal to its number. 
+There are N ranges and every range consists of two integers L  and R  denoting that the value of box in the range [L,R] will turn out to be zero. 
+Find the sum of values of all boxes from 1 to 10^6 .
+
+Note: The ranges may overlap.
+
+Input format
+
+First line: Integer N
+Next N lines: Two space-separated integers L and R  
+Output format
+Print a single integer denoting the answer.
+
+Constraints
+0≤N≤10^5
+1≤L≤R≤10^6
+
+SAMPLE INPUT 
+5
+2 20
+23 200
+21 21
+101 2000
+2002 999998
+SAMPLE OUTPUT 
+2002023
+Explanation
+Boxes having number 1, 22, 2001, 999999,1000000 does not belong to any range.
+So the sum of these numbers is 2002023 which is our answer.
+*/
+
+#include<bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+ll sum(ll l, ll r){
+    ll s=0;
+    for(int i=l; i<=r; i++) s+=i;
+return s; 
+}
+
+int main(){
+    int n; cin>>n;
+    int L[n] , R[n];
+    for(int i=0; i<n; i++) cin>>L[i]>>R[i];
+    sort(L, L+n);
+    sort(R, R+n);
+    ll sum1=0;
+    sum1 = sum(1 , L[0]-1);
+    for(int i=1; i<n; i++){
+        if(L[i] > R[i-1]  &&  (R[i-1] + 1  != L[i]) ){
+            sum1+=sum(R[i-1]+1 , L[i]-1);
+        }
+    }
+    
+    sum1+=sum(R[n-1]+1 , 1000000);
+    cout<<sum1;
+}
