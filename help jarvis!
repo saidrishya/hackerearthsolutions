@@ -51,19 +51,20 @@ int main()
 {
     int t; cin>>t; while(t--)
     {
-         string s; cin>>s;
-        vector<int> v;
-        int i=0;
-        while(s[i]!='\0')
-        {
-            v.push_back(s[i++]);
+    string s; cin>>s;
+    int a[1000000],flag=0;
+    for(int i=0; i<s.size(); i++){
+        a[i]=s[i]-48;
+     }
+    sort(a,a+s.size());
+    for(int i=1; i<s.size(); i++){
+        if(a[i] != a[i-1]+1){
+            flag=1;
+            break;
         }
-        sort(v.begin(),v.end());
-        for(i=0;i<v.size()-1;i++)
-        {
-            if((v[i+1]-v[i]) > 1) break;
-        }
-    if(i==v.size()-1) cout<<"YES\n";
-    else cout<<"NO\n";
+    }
+     if(flag==0) cout<<"YES\n";
+     else cout<<"NO\n";
+     
     }
 }
