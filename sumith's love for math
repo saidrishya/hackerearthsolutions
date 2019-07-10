@@ -1,0 +1,53 @@
+/*
+Sumit is doing research in mathematics . After doing lots of research, he struck in a problem . He found four numbers n,a, b and c .Now, 
+he wants to know how many number exists which are less than or equal to n and are divisible by a ,b or c .
+
+Input :
+
+First line contains 't' denoting numbers of test cases
+Next t lines contains 4 integers denoting n,a,b and c separated by space
+Output :
+
+'t' lines containing the count of the numbers which are divisible by a,or b, or c
+Constraints :
+
+1<=t<=10^5
+1<=n<=10^9
+1<=a,b,c<=10^5
+SAMPLE INPUT 
+1
+15 2 3 5
+SAMPLE OUTPUT 
+11
+Explanation
+Here n = 15 , a= 2, b=3,c = 5 The number which are divisible by a ,b, or c are 2,3,4,5,6,8,9,10,12,14,15 i.e 11 numbers , so output is 11
+*/
+
+#include<bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+ll gcd(ll a, ll b){
+    if(b==0) return a;
+    else return (gcd(b,a%b));
+}
+
+ll lcm(ll a , ll b){
+    return ((a*b)/gcd(a,b));
+}
+
+
+
+int main(){
+    int t; cin>>t; while(t--){
+    ll n,a,b,c,ans; cin>>n>>a>>b>>c;
+    ll la,lb,lc,lab,lac,lbc,labc;
+    la=n/a; lb=n/b; lc=n/c;
+    lab=n/lcm(a,b);
+    lac=n/lcm(a,c);
+    lbc=n/lcm(b,c);
+    labc=n/lcm(lcm(a,b),c);
+    ans=la+lb+lc-lab-lbc-lac+labc;
+cout<<ans<<endl;
+}
+}
