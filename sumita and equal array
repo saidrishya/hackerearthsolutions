@@ -1,0 +1,64 @@
+/*
+Sumita is playing with a Array A of size N. she wants to make all the values of A to be equal. she can multiply any value any number of times
+by X, Y and Z. Your task is to tell her whether she can do it or not. Print "She can" if she can do it else print "She can't" without ""
+
+Input :
+
+First line of the input will contain T (No. of test cases).
+For each test case, first line will contain four space separated integers denoting N, X, Y and Z.
+Then next line will contain N space separated integers of A
+Output :
+
+For every test case, print the required answer in a new line.
+Constraints :
+
+1 ≤ T ≤ 5
+2 ≤ N ≤ 10^5
+X, Y, Z ∈ {2, 3, 5, 7}
+1 ≤ Ai ≤ 10^9
+SAMPLE INPUT 
+2
+2 2 2 2
+2 4
+3 2 3 2
+2 6 7
+SAMPLE OUTPUT 
+She can
+She can't
+Explanation
+Test case #1: Multiply first value by 2.
+Test case #2: Not possible.
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t; cin>>t; while(t--){
+       int n,x,y,z,t; cin>>n>>x>>y>>z;
+       int a[n],flag=0;
+       for(int i=0; i<n; i++){
+           cin>>t;
+           while(t%x == 0){
+               t/=x;
+           }
+           while(t%y == 0){
+               t/=y;
+           }
+           while(t%z == 0){
+               t/=z;
+           }
+           a[i]=t;
+       }
+       for(int i=1; i<n; i++){
+           if(a[0]!=a[i]){
+               flag=1;
+               break;
+           }
+       }
+       if(flag) cout<<"She can't\n";
+       else cout<<"She can\n";
+    
+}
+return 0;
+}
