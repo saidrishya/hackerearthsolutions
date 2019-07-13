@@ -1,0 +1,68 @@
+/*
+Adi and his brother Vabu are playing a game with arrays.
+
+Vabu has an array A and Adi an array B of sizes N and M respectively. Since Vabu is the elder brother he wants every value of his array to 
+be greater than or equal to the values of his brothers array.
+
+In other words for every pair i ,j  A[ i ]>=B[ j ].  In one operation he can increase or decrease any element of array A or array B  by 1.
+Since he is always in a hurry he wants to perform this in minimum operations.
+
+ Can you help him in this simple task?
+
+INPUT
+
+In first line you are given two integers N, M denoting the number of elements in array A and B respectively.
+
+The next line contains N space separated integers of array A.
+
+The last line contains M space separated integers of array B.
+
+OUTPUT
+
+For every test case print the minimum number of operations.
+
+CONSTRAINTS
+
+1≤N≤10^5
+
+1≤A[i]≤10^9
+
+SAMPLE INPUT 
+3 2
+4 2 3
+3 5 
+SAMPLE OUTPUT 
+3
+Explanation
+In the first array 2 will be incremented to 3.
+
+In the second array 5 will be decremented to 3.
+*/
+
+
+
+
+#include <bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+int main()
+{
+   ios_base::sync_with_stdio(false);
+   cin.tie(NULL);
+   int n,m;    cin>>n>>m;    ll a[n],b[m],ans=0;
+   for(int i=0; i<n; i++) cin>>a[i];
+   for(int i=0; i<m; i++) cin>>b[i];
+   sort(a,a+n);
+   sort(b,b+m);
+   for(int i=0,j=m-1; i<n && j>=0; i++,j--){
+       if(a[i]<b[j]){
+           ans+=abs(a[i]-b[j]);
+       }
+   }
+   cout<<ans;
+    return 0;
+}
+
+
+So 2+1=3
