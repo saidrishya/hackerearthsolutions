@@ -1,0 +1,55 @@
+/*
+You are given an array A of N integers. You need to count the subarrays which have the sum of all elements in it a perfect square.
+
+Input
+The first line contains an integer N that denotes count of elements in the array. Next line contains N space separated integers that denote
+elements of the array.
+
+Output
+In the output, you need to print the count of subarrays for which the sum of elements is a perfect square.
+
+Constraints
+1≤N≤5000
+1≤A[i]≤106
+SAMPLE INPUT 
+4
+1 4 2 3
+SAMPLE OUTPUT 
+3
+Explanation
+The given array is: 1 4 2 3
+
+Let us list the sum of all possible subarrays:
+
+[1 , 1] = 1
+[1 , 2] = 1 + 4 = 5
+[1 , 3] = 1 + 4 + 2 = 7
+[1 , 4] = 1 + 4 + 2 + 3 = 10
+[2 , 2] = 4
+[2 , 3] = 4 + 2 = 6
+[2 , 4] = 4 + 2 + 3 = 9
+[3 , 3] = 2
+[3 , 4] = 2 + 3 = 5
+[4 , 4] = 3
+
+[1, 4, 9] = 3
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+   int n,c=0; cin>>n;
+   int a[n]; for(int i=0; i<n; i++) cin>>a[i];
+   for(int i=0; i<n; i++){
+       int s=a[i]; if(floor(sqrt(s)) == ceil(sqrt(s))) c++;
+       for(int j=i+1; j<n; j++){
+           s+=a[j];
+           if(floor(sqrt(s)) == ceil(sqrt(s))) c++;
+       }
+   }
+   cout<<c<<endl;
+
+    return 0;
+}
