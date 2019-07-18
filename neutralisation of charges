@@ -1,0 +1,42 @@
+/*
+In a parallel universe, there are not just two charges like positive and negative, but there are 26 charges represented by  lower english 
+alphabets.
+
+Charges have a property of killing each other or in other words neutralizing each other if they are of same charge and next to each other.
+
+You are given a string s where each si represents a charge, where 0≤i≤|s|−1.
+
+You need to output size of final string followed by string after which no neutralizing is possible.
+
+SAMPLE INPUT 
+12
+aaacccbbcccd
+SAMPLE OUTPUT 
+2
+ad
+Explanation
+aaacccbbcccd -> accd -> ad
+*/
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+   int n;
+   cin>>n;
+   vector<char> v;
+   char ch; cin>>ch;
+   v.push_back(ch);
+   for(int i=1; i<n; i++){
+       cin>>ch;
+       if(ch==v[v.size()-1]){
+           v.erase(v.begin()+v.size()-1);
+       }
+       else v.push_back(ch);
+   }
+   cout<<v.size()<<endl;
+   for(auto i: v){
+       cout<<i;
+   }
+   
+}
