@@ -1,0 +1,43 @@
+/*
+R-r-riddikulus"  used in the movie Harry Potter to transform anything from one form to other, Similarly you have to transform the array by
+rotation.
+
+A left rotation operation on an array shifts each of the array's elements 1 unit to the left. For example, if 2  left rotations are performed 
+on array [1,2,3,4,5], then the array would become [3,4,5,1,2].
+
+Given an array a of n integers and a number, d, perform d left rotations on the array. Return the updated array to be printed as a single line 
+of space-separated integers.
+
+ 
+
+Input Format
+
+The first line contains two space-separated integers n and d, the size of a and the number of left rotations you must perform. 
+The second line contains space-separated integers a[i] .
+
+Constraints
+
+1<=n<=105
+1<=d<=n
+1<=a[i]<=106
+Output Format
+
+Print a single line of n space-separated integers denoting the final state of the array after performing  left rotations.
+
+SAMPLE INPUT 
+5 4
+1 2 3 4 5
+SAMPLE OUTPUT 
+5 1 2 3 4
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,r;
+    cin>>n>>r;
+    int a[n]; for(int i=0; i<n; i++) cin>>a[i];
+    for(int i=r; i<n; i++) cout<<a[i]<<" ";
+    for(int i=0; i<r; i++) cout<<a[i]<<" ";
+}
