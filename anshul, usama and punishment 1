@@ -1,0 +1,59 @@
+/*
+Anshul and Usama are fond of games and devote most of their time playing them. On one hand Anshul likes to play outdoor games like football, 
+cricket, etc whereas on the other hand Usama likes to play mobile games like Clash of Clans, Mini Militia, etc. One day their teacher decided 
+to punish them. As punishment, their teacher sent them to a building and locked all the exit points of that building. After locking the exit 
+points, their teacher informed them from outside that the only way to come out of the building was by solving a problem.
+
+The problem he gave was that they will be given some initial terms of a series and they have to use the series and tell him the maximum value 
+of (|Ai + Aj|+|Ai - Aj|) where Ai and Aj are some ith and jth term of the series with the condition 0 <= i,j < n. Also, 'i' can not be equal to 'j'. 
+
+The initial terms of the series are 20, 30, 40, 90, 80, 270,...
+
+
+
+
+INPUT
+The value of n= 20
+
+OUTPUT
+Output the maximum value of (|Ai + Aj|+|Ai - Aj|).
+
+To see how to submit solution please check this link
+Compile and Test can give Wrong Answer. Once you have written your answer, press Submit button to check your result.
+
+SAMPLE INPUT 
+5
+SAMPLE OUTPUT 
+180
+*/
+
+#include<bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+
+void generate(int n, vector<ll> &v){
+    int base=1;
+    for(int i=0; i<n; i=i+2){
+        v.push_back(pow(2,base)*10);
+        v.push_back(pow(3,base)*10);
+        base++;
+    }
+   // for(int i: v) cout<<i<<" ";
+}
+
+
+
+int main(){
+    int n; cin>>n;
+    vector<ll> v;
+    generate(n,v);
+    int max=-1;
+    for(int i=0; i<n; i++){
+        for(int j=i+1; j<n; j++){
+            int s=abs(v[i]+v[j]) + abs(v[i]-v[j]);
+            if(s>max) max=s;
+        }
+    }
+    cout<<max;
+}
